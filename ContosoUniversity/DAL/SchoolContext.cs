@@ -1,6 +1,5 @@
 ﻿using ContosoUniversity.Models;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace ContosoUniversity.DAL
 {
@@ -15,4 +14,4 @@ namespace ContosoUniversity.DAL
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Course> Courses { get; set; }
     }
-} 
+}
