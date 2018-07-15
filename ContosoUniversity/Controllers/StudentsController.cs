@@ -79,22 +79,29 @@ namespace ContosoUniversity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LastName,FirstMidName,EnrollmentDate")] Student student)
+        public ActionResult EditPost(int? id)
         {
-            try
+            if (id == null)
             {
-                if (ModelState.IsValid)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var studentToUpdate = db.Students.Find(id);
+            if (TryUpdateModel(studentToUpdate, "",
+               new string[] { "LastName", "FirstMidName", "EnrollmentDate" }))
+            {
+                try
                 {
-                    db.Entry(student).State = EntityState.Modified;
                     db.SaveChanges();
+
                     return RedirectToAction("Index");
                 }
+                catch (DataException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
             }
-            catch (DataException)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            return View(student);
+            return View(studentToUpdate);
         }
 
         // GET: Students/Delete/5
