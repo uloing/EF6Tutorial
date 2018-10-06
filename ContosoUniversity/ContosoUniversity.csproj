@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201810061511257_ColumnFirstName.Designer.cs">
       <DependentUpon>201810061511257_ColumnFirstName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810061538275_RequiredNames.cs" />
+    <Compile Include="Migrations\201810061538275_RequiredNames.Designer.cs">
+      <DependentUpon>201810061538275_RequiredNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Enrollment.cs" />
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810061511257_ColumnFirstName.resx">
       <DependentUpon>201810061511257_ColumnFirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810061538275_RequiredNames.resx">
+      <DependentUpon>201810061538275_RequiredNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
